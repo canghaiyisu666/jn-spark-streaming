@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "RocketMQReader",
+    "props": {
+      "nameserver.list": "172.16.8.103:9876",
+      "consumer.id": "Group2",
+      "topic": "TopicTest2",
+      "tags": "*",
+      "schema": "{\"type\": \"record\", \"name\": \"Test\", \"fields\" : [{\"name\": \"col1\", \"type\": \"int\"}, {\"name\": \"col2\", \"type\": \"long\"}]}",
+      "is.list": "false"
+    }
+  },
+  {
+    "id": "2",
+    "name": "HiveWriter",
+    "inputs": [
+      "1"
+    ],
+    "props": {
+      "metastore.uris": "thrift://172.16.8.103:9083",
+      "DbName": "default",
+      "TableName": "jntest"
+    }
+  }
+]
